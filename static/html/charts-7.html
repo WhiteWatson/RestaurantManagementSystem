@@ -154,7 +154,7 @@
 				// console.log(data)
 				if (data.err == 0) {
 					let food
-					let money = 0
+					let money = 0, ok = 1
 					for (let index = 0; index < data.list.length; index++) {
 						food = data.list[index].name
 						// console.log('现在查询' + food)
@@ -166,8 +166,15 @@
 									money += data.list[i].receivables
 									allMoney += data.list[i].receivables
 								}
+								console.log(food + '---' + money)
+								if (money == 0) {
+									ok = 0
+								}
+								if (ok != 0) {
+									showData.push([food, money])
+								}
 								// console.log(food + '--------' + money)
-								showData.push([food, money])
+								// showData.push([food, money])
 								// console.log(showData)
 							} else if (data.err == -999) {
 								alert('请先登录')
@@ -179,14 +186,15 @@
 						$.ajaxSettings.async = true;
 						// console.log('查询后添加' + showData)
 						money = 0
+						ok = 1
 					}
-					console.log(showData)
+					// console.log(showData)
 					let str = ''
 					for (let i = 0; i < showData.length; i++) {
 						// console.log(showData[i][0])
 						str += "['" + showData[i][0] + "'," + showData[i][1] + "],"
 					}
-					console.log(str)
+					// console.log(str)
 					showData = str
 					abc(showData, allMoney)
 					// return str
