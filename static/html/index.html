@@ -32,8 +32,8 @@
 </head>
 
 <body>
-<!--_header 作为公共模版分离出去-->
-<header class="navbar-wrapper">
+	<!--_header 作为公共模版分离出去-->
+	<header class="navbar-wrapper">
 		<div class="navbar navbar-fixed-top">
 			<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs"
 					href="/index.html">餐厅管理系统</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs"
@@ -44,8 +44,8 @@
 					<ul class="cl">
 						<li>
 							<div style="width: 40px;">
-								<img src="/public/image/foodImg-1572136168325.png" id="loginUserImg" style="width: 100%;max-height: 100%;"
-									alt="">
+								<img src="/public/image/foodImg-1572136168325.png" id="loginUserImg"
+									style="width: 100%;max-height: 100%;" alt="">
 							</div>
 						</li>
 						<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A" id="loginUser">admin <i
@@ -90,7 +90,8 @@
 				</dd>
 			</dl>
 			<dl id="menu-product">
-				<dt class="selected"><i class="Hui-iconfont">&#xe620;</i> 账单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dt class="selected"><i class="Hui-iconfont">&#xe620;</i> 账单管理<i
+						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
 						<li><a href="product-brand.html" title="所有账单">所有账单</a></li>
@@ -106,8 +107,18 @@
 					</ul>
 				</dd>
 			</dl>
+			<dl id="menu-comments">
+				<dt class="selected"><i class="Hui-iconfont">&#xe622;</i> 评论管理<i
+						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a href="http://localhost:8080" title="意见反馈">意见反馈</a></li>
+					</ul>
+				</dd>
+			</dl>
 			<dl id="menu-tongji">
-				<dt class="selected"><i class="Hui-iconfont">&#xe61a;</i> 餐厅收入<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dt class="selected"><i class="Hui-iconfont">&#xe61a;</i> 餐厅收入<i
+						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
 						<li class="current"><a href="charts-1.html" title="折线图">折线图</a></li>
@@ -132,7 +143,8 @@
 			<div style="margin-left: 30px;">
 				<h1>欢迎来到小白的餐厅管理系统</h1>
 				<h2>客官，吃点啥类</h2>
-				<h3>诶，不对，这是个后台，抱歉，客官您走错了（笑脸）</h3></div>
+				<h3>诶，不对，这是个后台，抱歉，客官您走错了（笑脸）</h3>
+			</div>
 		</div>
 	</section>
 
@@ -145,7 +157,7 @@
 
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript">
-		
+
 	</script>
 	<!--/请在上方写此页面业务相关的脚本-->
 
@@ -161,34 +173,34 @@
 	</script>
 	<!--/此乃百度统计代码，请自行删除-->
 	<script>
-			// 公共脚本
-			// session
-	
-			// 显示个人信息
-			function showUser(){
-				$.get('/user/getLoginUser',{},(data)=>{
-					console.log(data)
-					if(data.err == 0){
-						loginUserImg
-						$('#loginUserImg').attr('src',data.loginUser.headPortrait)
-						$('#loginUser').html(data.loginUser.name)
-					}
-	
-				})
-			}
-			showUser()
-			// 登出
-			function logout(){
-				$.post('/user/logout',{},(data)=>{
-					if (data.err == 0) {
-						alert(data.msg)
-						window.location.href = './login.html'
-					}else{
-						alert('退出失败，请重试')
-					}
-				})
-			}
-		</script>
+		// 公共脚本
+		// session
+
+		// 显示个人信息
+		function showUser() {
+			$.get('/user/getLoginUser', {}, (data) => {
+				console.log(data)
+				if (data.err == 0) {
+					loginUserImg
+					$('#loginUserImg').attr('src', data.loginUser.headPortrait)
+					$('#loginUser').html(data.loginUser.name)
+				}
+
+			})
+		}
+		showUser()
+		// 登出
+		function logout() {
+			$.post('/user/logout', {}, (data) => {
+				if (data.err == 0) {
+					alert(data.msg)
+					window.location.href = './login.html'
+				} else {
+					alert('退出失败，请重试')
+				}
+			})
+		}
+	</script>
 </body>
 
 </html>
