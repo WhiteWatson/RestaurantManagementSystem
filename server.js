@@ -19,7 +19,7 @@ app.use(session({
     secret: 'Odasbhn41854asdqw',     //秘钥
     resave: true,   // 即使 session 没有修改也保存 session 值
     saveUninitialized: false,
-    cookie: { maxAge: 60 * 1000 *60 }   //回话保存时间 一小时
+    cookie: { maxAge: 60 * 1000 *60 *24 }   //回话保存时间 一小时
 }))
 
 
@@ -61,6 +61,10 @@ app.use('/order', (req,res,next)=>{
     }
 }, orderRouter)
 
+app.use(function(req, res) {
+    // res.send('my 404')
+    res.send("<img width=1500 src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573218087&di=f990cc9b11c4a14f0fd2a4854561cc2e&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fe291fd0620edbd70d10302e5627b9e1fa5edb7963c31b-gOdPdM_fw658' />")
+  })
 
 
 app.listen('3000', () => {
